@@ -5,6 +5,6 @@ from dotenv import load_dotenv
 
 load_dotenv(verbose=True)
 
-SQL_URL = os.getenv('External Database URL')
+SQL_URL = os.getenv('DATABASE_URL')
 
 # 'postgresql://postgres:tuuytr@localhost:5432/students_db'
