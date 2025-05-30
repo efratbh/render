@@ -2,7 +2,7 @@ from app.sql_db.database import session_maker
 from app.sql_db.models.buisness_owner import BusinessOwner
 from app.sql_db.models.category import Category
 from app.sql_db.models.smb import Smb
-from app.sql_db.models.smb_category import Smb_category
+from app.sql_db.models.smb_category import SmbCategory
 from app.sql_db.models.transaction import Transaction
 from app.sql_db.models.xtribution import Xtribution
 

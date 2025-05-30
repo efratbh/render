@@ -1,11 +1,12 @@
-from sqlalchemy.orm import relationship
-
-from app.sql_db.models import Base
 from sqlalchemy import Column, Integer, Boolean, String, Numeric, Float, JSON, ForeignKey
+from sqlalchemy.orm import relationship
+from app.sql_db.models import Base
 
 
 class Smb(Base):
     __tablename__ = 'smbs'
+    __table_args__ = {'schema': 'public'}
+
     id = Column(Integer, primary_key=True)
     name = Column(String)
     discount_percent = Column(Numeric(5, 2))
@@ -20,12 +21,13 @@ class Smb(Base):
     social_urls = Column(String)
     type = Column(String)
     profile_pic = Column(String)
-    biz_owner_id = Column(Integer, ForeignKey('biz_owners.id'))
+    biz_owner_id = Column(Integer, ForeignKey('public.biz_owners.id'))  # ✅ הוספנו schema
     plan = Column(String)
     google_place_id = Column(String)
     external_data = Column(JSON)
 
-    categories = relationship('Category', secondary='smbs_categories', back_populates='smbs')
+    # ✅ קשרים מוגדרים עם סכימה
+    categories = relationship('Category', secondary='public.smbs_categories', back_populates='smbs')
     transactions = relationship('Transaction', back_populates='smbs')
     xtributions = relationship('Xtribution', back_populates='smbs')
     biz_owners = relationship('BusinessOwner', back_populates='smbs')
