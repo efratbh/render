@@ -13,15 +13,15 @@ class Transaction(Base):
     total_amount = Column(Numeric(10, 4))
     handled_by_user_id = Column(Integer)
     xtributer_id = Column(Integer)
-    smb_id = Column(Integer, ForeignKey('public.smbs.id'))              # ✅ עם schema
-    xtribution_id = Column(Integer, ForeignKey('public.xtributions.id'))  # ✅ מתוקן!
+    smb_id = Column(Integer, ForeignKey('public.smbs.id'))
+    xtribution_id = Column(Integer, ForeignKey('public.xtributions.id'))
     create_date = Column(DateTime)
     update_date = Column(DateTime)
     foundation_id = Column(Integer)
     invoice_id = Column(Integer)
     is_promotional = Column(Boolean)
 
-    smbs = relationship('Smb', back_populates='transactions')
+    smb = relationship('Smb', back_populates='transactions')
     xtribution = relationship('Xtribution', back_populates='transaction')
 
     def __repr__(self):

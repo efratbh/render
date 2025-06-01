@@ -28,9 +28,9 @@ class Smb(Base):
 
     # ✅ קשרים מוגדרים עם סכימה
     categories = relationship('Category', secondary='public.smbs_categories', back_populates='smbs')
-    transactions = relationship('Transaction', back_populates='smbs')
+    transactions = relationship('Transaction', back_populates='smb')
     xtributions = relationship('Xtribution', back_populates='smbs')
-    biz_owners = relationship('BusinessOwner', back_populates='smbs')
+    biz_owners = relationship('BusinessOwner', back_populates='smb')
 
     def __repr__(self):
         return (f"<Smb id={self.id} name='{self.name}' type='{self.type}' "

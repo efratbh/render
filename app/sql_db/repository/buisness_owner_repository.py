@@ -1,3 +1,5 @@
+from sqlalchemy.orm import joinedload
+
 from app.sql_db.database import session_maker
 from app.sql_db.models.buisness_owner import BusinessOwner
 from app.sql_db.models.category import Category
@@ -17,7 +19,12 @@ def get_business_owner_by_id(owner_id: int):
 
 def get_businness_owner_by_name_and_password(owner_full_name: str, password: str):
     with session_maker() as session:
-        return session.query(BusinessOwner).filter_by(owner_full_name=owner_full_name, bn_number=password).first()
+        return (
+            session.query(BusinessOwner)
+            .options(joinedload(BusinessOwner.smb))
+            .filter_by(owner_full_name=owner_full_name, bn_number=password)
+            .first()
+        )
 
 def create_business_owner(bn_number: str, owner_full_name: str, is_payment_established: bool,
                           payment_method_type: str, is_paying: bool):
