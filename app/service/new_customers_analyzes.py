@@ -59,10 +59,12 @@ def get_new_customers_comparison_json(json_data: list[dict], target_smb_id: int)
     plot_df = target_df.merge(others_avg, on='month', how='left')
     plot_df = plot_df.rename(columns={'new_customers': 'smb_target'})
 
-    # המרה ל־JSON מוכן לגרף
-    plot_df['month'] = plot_df['month'].dt.strftime('%Y-%m')  # עיצוב חודש
+    # המרה ל־JSON מוכן לגרף — עם תאריך כ-ISO8601
+    plot_df['month'] = plot_df['month'].dt.strftime('%Y-%m-01T00:00:00.000Z')
+
     json_ready = plot_df.to_dict(orient='records')
     return json_ready
+
 
 def get_monthly_new_customers_analysis(smb_id: int) -> list[dict]:
     transactions_data = get_smbs_details_with_same_categories_by_smb_id(smb_id)

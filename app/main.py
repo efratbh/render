@@ -18,11 +18,13 @@ from flask import Flask
 
 from app.routes.analyze_routes import analyzes_blueprint
 from app.routes.auth_route import auth_blueprint
+from app.routes.ba import sales_blueprint
 from app.sql_db.database import init_db
 
 app = Flask(__name__)
 app.register_blueprint(auth_blueprint, url_prefix='/api/auth')
 app.register_blueprint(analyzes_blueprint, url_prefix='/api/analyze')
+app.register_blueprint(sales_blueprint, url_prefix='/api/sales')
 
 # תמיד נריץ את זה, גם ברנדר:
 init_db()

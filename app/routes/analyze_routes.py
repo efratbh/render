@@ -17,4 +17,5 @@ def new_customers_per_month_route(smb_id: int):
         return jsonify({"Message": 'Baddddddddddddddddddd'}), 400
 
     except Exception as e:
+        print(str(e))
         return jsonify({'Message': 'Error, Something got wrong, please try again'}), 500

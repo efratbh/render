@@ -17,3 +17,4 @@ def authentication_route(owner_full_name: str, password: str):
 
     except Exception as e:
         return jsonify({'Message': 'Error, Something got wrong, please try again'}), 500
+# http://192.168.33.11:8080/api/auth
