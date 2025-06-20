@@ -98,7 +98,6 @@ cython_debug/
 
 # Custom tools
 .ruff_cache/
-.render.yaml
 .pypirc
 
 # AI tools
