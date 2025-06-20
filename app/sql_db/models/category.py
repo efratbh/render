@@ -10,7 +10,6 @@ class Category(Base):
     id = Column(Integer, primary_key=True)
     type = Column(String)
 
-    # חובה לציין את שם הסכימה בטבלת הקישור
     smbs = relationship('Smb', secondary='public.smbs_categories', back_populates='categories')
 
     def __repr__(self):

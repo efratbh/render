@@ -21,7 +21,7 @@ class Smb(Base):
     social_urls = Column(String)
     type = Column(String)
     profile_pic = Column(String)
-    biz_owner_id = Column(Integer, ForeignKey('public.biz_owners.id'))  # ✅ הוספנו schema
+    biz_owner_id = Column(Integer, ForeignKey('public.biz_owners.id'))
     plan = Column(String)
     google_place_id = Column(String)
     external_data = Column(JSON)

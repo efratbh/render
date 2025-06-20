@@ -1,0 +1,112 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+.pdm-python
+.pdm-build/
+__pypackages__/
+
+# Environment variables
+.env
+.envrc
+
+# Build & distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+*.whl
+MANIFEST
+develop-eggs/
+downloads/
+lib/
+lib64/
+parts/
+sdist/
+var/
+share/python-wheels/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Compiled C extensions
+*.so
+*.pyd
+
+# PyInstaller
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+.pytest_cache/
+.hypothesis/
+
+# Mypy & Type checking
+.mypy_cache/
+.pytype/
+.pyre/
+
+# IDE settings
+.idea/
+.vscode/
+.spyderproject
+.spyproject
+.ropeproject
+
+# Jupyter
+.ipynb_checkpoints
+
+# SQLite DB
+db.sqlite3
+db.sqlite3-journal
+
+# Logs
+*.log
+
+# Flask
+instance/
+.webassets-cache
+
+# Django
+local_settings.py
+
+# Documentation
+docs/_build/
+site/
+
+# Cython debug symbols
+cython_debug/
+
+# Custom tools
+.ruff_cache/
+.render.yaml
+.pypirc
+
+# AI tools
+.abstra/
+.cursorignore
+.cursorindexingignore
+
+# Marimo
+marimo/_static/
+marimo/_lsp/
+__marimo__/

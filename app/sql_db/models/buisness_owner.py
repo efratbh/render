@@ -14,7 +14,6 @@ class BusinessOwner(Base):
     payment_method_type = Column(String)
     is_paying = Column(Boolean)
 
-    # נגדיר את הקשר מבלי לייבא את Smb ישירות כדי להימנע ממעגליות
     smb = relationship('Smb', back_populates='biz_owners')
 
     def __repr__(self):

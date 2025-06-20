@@ -13,7 +13,7 @@ class Xtribution(Base):
     uuid = Column(String)
     photo_url = Column(String)
     xtributer_id = Column(Integer)
-    smb_id = Column(Integer, ForeignKey('public.smbs.id'))  # ✅ schema נוסף
+    smb_id = Column(Integer, ForeignKey('public.smbs.id'))
     create_date = Column(DateTime)
     end_date = Column(DateTime)
     dynamic_link = Column(String)

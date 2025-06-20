@@ -52,10 +52,6 @@ def get_create_data_xtributer_id_by_smbs_ids(smbs_ids: list[int]) -> list[dict]:
 
         return json_results
 
-
-
- # print(results)
-
 def get_new_customers_comparison_json(json_data: list[dict], target_smb_id: int) -> list[dict]:
     import pandas as pd
 
