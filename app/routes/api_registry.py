@@ -11,9 +11,9 @@ from app.routes.smb_self_sales_comparison_routes import self_sales_ns
 
 def register_all_namespaces(api: Api):
     api.add_namespace(auth_ns, path='/api/auth')
-    api.add_namespace(new_returning_customers_ns, path='/api/analyze/new_customers')
+    api.add_namespace(new_returning_customers_ns, path='/api/analyze/new-customers')
     api.add_namespace(self_sales_ns, path='/api/analyze/sales')
-    api.add_namespace(customers_vs_others_ns, path='/api/analyze/compare_customers')
-    api.add_namespace(sales_vs_others_ns, path='/api/analyze/compare_sales')
-    api.add_namespace(recommendations_vs_others_ns, path='/api/analyze/compare_recommendations')
-    api.add_namespace(sales_forecast_ns, path='/api/analyze/sales_forecast')
+    api.add_namespace(customers_vs_others_ns, path='/api/analyze/compare-customers')
+    api.add_namespace(sales_vs_others_ns, path='/api/analyze/compare-sales')
+    api.add_namespace(recommendations_vs_others_ns, path='/api/analyze/compare-recommendations')
+    api.add_namespace(sales_forecast_ns, path='/api/analyze/sales-forecast')
