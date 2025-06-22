@@ -1,34 +1,34 @@
-from flask import Blueprint, jsonify
-from app.service.sales_vs_others_service import weekly_sales_comparison, monthly_sales_comparison
+from flask_restx import Namespace, Resource
+from app.service.sales_vs_others_service import (
+    weekly_sales_comparison,
+    monthly_sales_comparison
+)
+
+sales_vs_others_ns = Namespace(
+    'Sales Comparison',
+    description='Compare sales between the target business and similar businesses'
+)
+
+@sales_vs_others_ns.route('/monthly/<int:smb_id>')
+class SalesMonthlyComparison(Resource):
+    def get(self, smb_id: int):
+        try:
+            result = monthly_sales_comparison(smb_id=smb_id)
+            print(result)
+            if result:
+                return result, 200
+            return {"message": "No data found"}, 400
+        except Exception as e:
+            return {"message": f"Server error: {str(e)}"}, 500
 
 
-compare_sales_blueprint = Blueprint('compare_sales', __name__)
-
-
-@compare_sales_blueprint.route('/monthly/<int:smb_id>', methods=['GET'])
-def compare_sales_monthly_route(smb_id: int):
-    try:
-        compare_sales_monthly_details: list[dict] = monthly_sales_comparison(smb_id=smb_id)
-
-        if compare_sales_monthly_details:
-            return jsonify(compare_sales_monthly_details), 200
-
-        return jsonify({"Message": 'Bad'}), 400
-
-    except Exception as e:
-        print(str(e))
-        return jsonify({'Message': 'Error, Something got wrong, please try again'}), 500
-
-@compare_sales_blueprint.route('/weekly/<int:smb_id>', methods=['GET'])
-def compare_sales_weekly_route(smb_id: int):
-    try:
-        compare_sales_weekly_details: list[dict] = weekly_sales_comparison(smb_id=smb_id)
-
-        if compare_sales_weekly_details:
-            return jsonify(compare_sales_weekly_details), 200
-
-        return jsonify({"Message": 'Bad'}), 400
-
-    except Exception as e:
-        print(str(e))
-        return jsonify({'Message': 'Error, Something got wrong, please try again'}), 500
+@sales_vs_others_ns.route('/weekly/<int:smb_id>')
+class SalesWeeklyComparison(Resource):
+    def get(self, smb_id: int):
+        try:
+            result = weekly_sales_comparison(smb_id=smb_id)
+            if result:
+                return result, 200
+            return {"message": "No data found"}, 400
+        except Exception as e:
+            return {"message": f"Server error: {str(e)}"}, 500

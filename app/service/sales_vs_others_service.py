@@ -20,8 +20,9 @@ def compare_sales(smb_id, ranges):
         results.append({
             "start_date": start.isoformat(),
             "end_date": end.isoformat(),
-            "my_total_transaction_amount": get_my_transaction_total(smb_id, start, end),
-            "similar_avg_transaction_amount": get_similar_transaction_avg(category_id, smb_id, start, end)
+            "my_total_transaction_amount": float((get_my_transaction_total(smb_id=smb_id, start_date=start, end_date= end)) or 0),
+            "similar_avg_transaction_amount": float((get_similar_transaction_avg(category_id=category_id, smb_id=smb_id,
+                                                                          start_date=start, end_date=end)) or 0)
         })
 
     return results

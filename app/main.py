@@ -1,10 +1,12 @@
 from flask import Flask
-from app.routes.init_routes import register_all_blueprints
+from flask_restx import Api
+from app.routes.api_registry import register_all_namespaces
 from app.sql_db.database import init_db
 
-
 app = Flask(__name__)
-register_all_blueprints(app)
+api = Api(app, version="1.0", title="LINX BI API", description="Business Intelligence API")
+
+register_all_namespaces(api)
 init_db()
 
 if __name__ == '__main__':

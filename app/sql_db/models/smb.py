@@ -26,7 +26,6 @@ class Smb(Base):
     google_place_id = Column(String)
     external_data = Column(JSON)
 
-    # ✅ קשרים מוגדרים עם סכימה
     categories = relationship('Category', secondary='public.smbs_categories', back_populates='smbs')
     transactions = relationship('Transaction', back_populates='smb')
     xtributions = relationship('Xtribution', back_populates='smbs')
