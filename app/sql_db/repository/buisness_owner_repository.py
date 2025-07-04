@@ -21,7 +21,9 @@ def get_businness_owner_by_name_and_password(owner_full_name: str, password: str
     with session_maker() as session:
         return (
             session.query(BusinessOwner)
-            .options(joinedload(BusinessOwner.smb))
+            .options(
+                joinedload(BusinessOwner.smb).joinedload(Smb.categories)
+                     )
             .filter_by(owner_full_name=owner_full_name, bn_number=password)
             .first()
         )

@@ -1,5 +1,5 @@
 from flask_restx import Namespace, Resource
-from app.service.sales_forecast_service import monthly_sales_forecast, weekly_sales_forcast
+from app.service.sales_forecast_service import sales_forecast_weekly, sales_forecast_monthly
 
 
 sales_forecast_ns = Namespace(
@@ -11,7 +11,7 @@ sales_forecast_ns = Namespace(
 class SalesMonthlyForcast(Resource):
     def get(self, smb_id: int):
         try:
-            result = monthly_sales_forecast(smb_id=smb_id)
+            result = sales_forecast_monthly(smb_id=smb_id)
 
             if result:
                 return result, 200
@@ -26,7 +26,7 @@ class SalesMonthlyForcast(Resource):
 class SalesWeeklyForecast(Resource):
     def get(self, smb_id: int):
         try:
-            result = weekly_sales_forcast(smb_id=smb_id)
+            result = sales_forecast_weekly(smb_id=smb_id)
 
             if result:
                 return result, 200

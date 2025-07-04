@@ -4,6 +4,11 @@ from app.sql_db.database import session_maker
 from app.sql_db.models.transaction import Transaction
 from app.sql_db.models.smb_category import SmbCategory
 
+
+def get_all_transactions_by_smb_id(smb_id: int):
+    with session_maker() as session:
+        return session.query(Transaction).filter(Transaction.smb_id == smb_id).all()
+
 def get_sum_transactions(smb_id: int, start_date: datetime, end_date: datetime) -> float:
     with session_maker() as session:
         total = session.query(func.sum(Transaction.total_amount)) \
